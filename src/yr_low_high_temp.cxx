@@ -10,14 +10,14 @@
 
 void generateTemperatureGraph() {
     // Open the ROOT file generated from writeTree.cxx
-    TFile *file = TFile::Open("measurement_file.root", "READ");
+    TFile *file = TFile::Open("../measurement_file.root", "READ");
     if (!file || file->IsZombie()) {
         std::cerr << "Error opening file!" << std::endl;
         return;
     }
 
     // Get the TTree from the file
-    TTree *tree = (TTree*)file->Get("MeasurementTree");
+    TTree *tree = (TTree*)file->Get("tree");
     if (!tree) {
         std::cerr << "Error: TTree not found!" << std::endl;
         return;
