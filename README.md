@@ -67,7 +67,7 @@ The repository contains folders and files related to this project
 
 1. Clone the repository:
    ```bash
-      git clone https://github.com/Adib-Sh/MNXB11-project-template.git
+      git clone -b homework7 --recurse-submodules https://github.com/Adib-Sh/MNXB11-project-template.git
       cd MNXB11-project-template-homework7
    ```
 
