@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Read each row and print date and measurement with the corresponding weekday
-    while (csv.read_row(day, year, month, measurement)) {
+    while (reader.read_row(day, year, month, measurement)) {
         // Get the weekday using date library functions
         year_month_day ymd{date::year{year}, date::month{static_cast<unsigned>(month)}, date::day{static_cast<unsigned>(day)}};
         sys_days date = ymd;
