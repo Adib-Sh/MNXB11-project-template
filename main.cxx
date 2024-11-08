@@ -13,13 +13,35 @@ using namespace date;
 using namespace std::chrono;
 
 int main(int argc, char *argv[]) {
+    std::string filename;
+    bool verbose = false;
+
+    // Define the command-line interface using Lyra
+    auto cli = lyra::cli()
+        .add_argument(lyra::arg(filename, "filename").required()
+            .help("Path to the CSV file"))
+        .add_argument(lyra::arg(verbose, "verbose").optional()
+            .help("Enable verbose output"));
+
+    // Parse the arguments
+    auto result = cli.parse({argc, argv});
+    if (!result) {
+        std::cerr << "Error: " << result.message() << std::endl;
+        return 1;
+    }
+
+    if (filename.empty()) {
+        std::cerr << "No filename provided!" << std::endl;
+        return 1;
+    }
+
+
     // Check if a filename is provided
     if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <csv_file>" << std::endl;
         return 1; // Return error code
     }
 
-    const char* filename = argv[1];
 
     // Create a CSV reader object
     io::CSVReader<4> reader(filename); // Assuming there are 5 columns, but we'll skip the 4th
@@ -29,18 +51,6 @@ int main(int argc, char *argv[]) {
     int day, year, month;
     double measurement;
 
-    bool verbose = false;
-    lyra::cli cli;
-
-    cli.add_argument(lyra::arg(verbose, "verbose").help("Enable output"));
-    lyra::args args(argc, argv);
-
-    // Parse the arguments
-    auto result = cli.parse(args);
-    if (!result) {
-        std::cerr << "Error: " << result.message() << std::endl;
-        return 1;
-    }
 
     // Read each row and print date and measurement with the corresponding weekday
     while (reader.read_row(day, year, month, measurement)) {
