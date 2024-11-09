@@ -78,9 +78,14 @@ The repository contains folders and files related to this project
 
 3. Run the main program:
    ```bash
-      ./main
+      ./main -i <Input .CSV>
    ```
-
+   a test file is provided in `datasets/test.csv`
+   To open the help panel:
+   ```bash
+      ./main -h
+   ```
+   
 ## Libraries Overview
 
 For this project, the following libraries are used
