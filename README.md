@@ -108,21 +108,14 @@ MNXB11-project-template-homework7/
 
 - For the header only libraries Lyra, Fast C++ CSV Parsing and Date, the installation procedure is as described below. All commands are intended to be executed from the root directory of the project, unless otherwise specified.
 
-1. Lyra:
-
-```bash
-git clone https://github.com/bfgroup/Lyra.git
-cp Lyra/include/lyra/lyra.hpp external/include/
-
-```
-2. Fast C++ CSV Parsing
+1. Fast C++ CSV Parsing
 
 ```bash
 git clone https://github.com/ben-strasser/fast-cpp-csv-parser.git
 cp fast-cpp-csv-parser/csv.h external/include/
 
 ```
-3. Date
+2. Date
 
 ```bash
 git clone https://github.com/HowardHinnant/date.git
